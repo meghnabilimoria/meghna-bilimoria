@@ -38,6 +38,11 @@ app.get('/about', (req, res) => {
 app.get('/project', (req, res) => {
     res.render('project', { title:'My Projects',page:'project' })
 })
+
+// video
+app.get('/video', (req, res) => {
+    res.render('video', { title:'My Videos',page:'video' })
+})
 // service
 app.get('/service', (req, res) => {
     res.render('service', { title:'My Services',page:'service' })
