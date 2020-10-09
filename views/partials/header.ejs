@@ -39,7 +39,7 @@
                     <li id="LIservice"><a href="service">Services</a></li>
                     <li id="LIproject"><a href="project">Projects</a>
                         <ul>
-                            <li><a href="#">Videos</a></li>
+                            <li><a href="video">Videos</a></li>
                         </ul>
                     </li>
                     <li id="LIcontact"><a href="contact">Contact Me</a></li>
@@ -75,4 +75,7 @@
     }
     $("[id^=LI]").removeClass("active");
     $("#LI" + title.toLocaleLowerCase()).addClass("active");
+    if(title.toLocaleLowerCase()=="video"){
+        $("#LIproject").addClass("active");
+    }
 </script>
