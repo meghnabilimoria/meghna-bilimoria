@@ -15,7 +15,7 @@
                     <div class="col-md-7">
                         <h3 class="contact-title">Send Me Email</h3>
                         <div class="contact-form-inner">
-                            <form action="#" name="contactform" id="contactform">
+                            <form action="/insert" name="contactform" method="POST" id="contactform">
                                 <p>
                                     <label for="name">Your Name:</label>
                                     <input name="name" type="text" id="name">
@@ -32,7 +32,7 @@
                                     <label for="comments">Your message:</label>
                                     <textarea name="comments" id="comments"></textarea>
                                 </p>
-                                <input class="mainBtn" id="submit" value="Send Message" />
+                                <input class="mainBtn" type="submit" id="submit" value="Send Message" />
                                 <a id="ASubmit" style="display: none;"></a>
                             </form>
                         </div> <!-- /.contact-form-inner -->
@@ -40,7 +40,7 @@
                     </div> <!-- /.col-md-7 -->
                     <div class="col-md-5">
                         <h3 class="contact-title">Meghna Arvindbhai Bilimoria</h3>
-                        <span>637 Highglen Avenue, Markham,<br> ON L3S 4P6</span>
+                        <span> Highglen Avenue, Markham,<br> ON L3S 4P6</span>
                         <p><span class="blue"><img src="images/wa.png"
                                     style="height: 15px;width: 15px;float: left;margin-right:10px;margin-top: 4px;"> +91
                                 96875 17799</span><br><a href="mailto:bilimoriameghna12@gmail.com"><b
@@ -59,11 +59,11 @@
 
 
 <script>
-    $("#submit").click(function () {
-        // to open email once click on submit button
-        var aSubmit = $("#ASubmit");
-        aSubmit.attr("href", "mailto:bilimoriameghna12@gmail.com?Subject=Contact to Meghna Bilimoria from Contact form&Body=Name: " + $("#name").val() + "  Email: " + $("#email").val() + "   Phone number: " + $("#phone").val() + "  Comments: " + $("#comments").val());
-        aSubmit.attr("target", "blank");
-        aSubmit[0].click();
-    }); 
+    // $("#submit").click(function () {
+    //     // to open email once click on submit button
+    //     var aSubmit = $("#ASubmit");
+    //     aSubmit.attr("href", "mailto:bilimoriameghna12@gmail.com?Subject=Contact to Meghna Bilimoria from Contact form&Body=Name: " + $("#name").val() + "  Email: " + $("#email").val() + "   Phone number: " + $("#phone").val() + "  Comments: " + $("#comments").val());
+    //     aSubmit.attr("target", "blank");
+    //     aSubmit[0].click();
+    // }); 
 </script>

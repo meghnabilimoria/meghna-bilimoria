@@ -1,0 +1,123 @@
+<!-- about.ejs : Meghna Bilimoria - 301127778 - 8th Oct 2020.        -->
+
+<link href="css/dashboard-styles.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+<div class="content-wrapper">
+    <div class="inner-container container">
+        <div class="card mb-4">
+            <div class="card-header">
+                <a href="logout" class="ui button green editBtn">Logout</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% items.forEach((item)=>{%>
+                            <tr>
+                                <td id="itemName_<%= item._id %>"><%- item.name %></td>
+                                <td id="itemPhone_<%= item._id %>"><%- item.phone %></td>
+                                <td id="itemEmail_<%= item._id %>"><%- item.email %></td>
+                                <td><a class="ui button green editBtn" id="btnEdit_<%= item._id %>"><i
+                                            class="edit icon fa fa-pencil"></i> Edit </a>
+                                </td>
+                                <td><form action="/delete" name="deleteform" method="POST" id="deleteform">
+                                    <!-- <a class="ui button green actnBtn" href="dashboard/<%= item._id %>"><i id="delete"
+                                            class="minus red icon fa fa-trash"></i> Delete</a> -->
+                                            <input type="hidden" name="_id" id="deleteId_<%= item._id %>" value="<%= item._id %>">
+                                            <input class="ui button green actnBtn" type="submit" id="btnDelete" value="Delete" />
+                                        </form></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/edit" name="editform" method="POST" id="editform">
+                    <input type="hidden" name="_id" id="editId">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Name: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" id="editName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="phone" class="col-sm-2 col-form-label">Phone: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="phone" id="editPhone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="email" id="editEmail">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" id="btnUpdate" class="btn btn-primary" value="Save Changes" />
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[id^=btnEdit]').click(function () {
+            debugger;
+            var id = $(this).attr("id").replace("btnEdit_", "");
+            $("#editId").val(id);
+            $("#editName").val($("#itemName_" + id).text());
+            $("#editPhone").val($("#itemPhone_" + id).text());
+            $("#editEmail").val($("#itemEmail_" + id).text());
+            $('#exampleModalLong').modal('show');
+        });
+    });
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="js/dashboard-scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="js/datatables-demo.js"></script>
